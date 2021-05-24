@@ -1,0 +1,29 @@
+<!--view 에서 랜더링할 때 가독성을 높이기 위해-->
+<!--hello_world.html 보다 accountapp/hello_world.html 이 어디서 가져왔는지 가독성 확인이 쉬움-->
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div style="border-radius: 1rem; margin: 2rem; text-align: center">
+        <h1 style="font-family: 'Fredoka One', cursive">
+            Hello World LIST!
+        </h1>
+        <form action="/account/hello_world/" method="post">
+            {% csrf_token %}
+            <div>
+                <input type="text" name="hello_world_input">
+            </div>
+            <div>
+                <input type = "submit" class="btn btn-primary" value="POST">
+            </div>
+        </form>
+        {% if hello_world_list %}
+            {% for hello_world in hello_world_list %}
+            <h4>
+                {{  hello_world.text }}
+            </h4>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}
