@@ -11,6 +11,7 @@ from profileapp.decorators import profile_ownership_required
 
 
 class ProfileCreateView(CreateView):
+
     model = Profile
     context_object_name = 'target_profile'
     form_class = ProfileCreationForm

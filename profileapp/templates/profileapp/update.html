@@ -18,7 +18,7 @@
           <h6 style="color: #000000;">우편번호</h6>
 
 <!--          {% bootstrap_field form.zonecode %}-->
-
+            {{ form.zonecode.errors }}
             <input name = "zonecode"   class="btn btn-outline-secondary col-7.6 mt-3"   type="text" id="sample4_postcode" placeholder="우편번호">
             <input type="button" class = "btn btn-dark rounded-pill col-4 mt-3" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 
