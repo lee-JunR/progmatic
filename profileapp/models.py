@@ -17,5 +17,5 @@ class Profile(models.Model):
     email = models.EmailField(max_length=50) # 이메일
     nickname = models.CharField(max_length=20, unique=True, null=True)# 유일한 닉네임을 가지도록
     message = models.CharField(max_length=100, null=True)
-
+    zonecode = models.CharField(max_length=100)
 
