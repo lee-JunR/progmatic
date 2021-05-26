@@ -12,7 +12,7 @@
 <!--      # 사진-->
       <img src="{{ target_user.profile.image.url }}" alt="" style="height: 12rem; width: 12rem;border-radius: 10rem; margin-bottom: 2rem;">
 
-      <h2>
+      <h2 style="margin-bottom: 2rem">
         {{ target_user.profile.nickname }}
         {% if target_user == user %}
         <a class="material-icons"
@@ -25,18 +25,29 @@
 
 
       <!--      message 보여주기-->
+      <h5 style="margin-bottom: 1rem">
+
+        Email : {{ target_user.profile.email }}
+
+      </h5>
+      <h5 style="margin-bottom: 1rem">
+
+        부서 : {{ target_user.profile.dept }}
+
+      </h5>
       <h5 style="margin-bottom: 3rem">
 
-        {{ target_user.profile.message }}
+        기타 : {{ target_user.profile.message }}
 
       </h5>
 
 
       {% else %}
         {% if target_user == user %}
-        <a href="{% url 'profileapp:create' %}">
+        <a class="media"
+                href="{% url 'profileapp:create' %}">
           <h2>
-            Create Profile
+            프로필 사진 설정
           </h2>
         </a>
         {% else %}

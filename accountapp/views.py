@@ -22,7 +22,7 @@ has_ownership = [account_ownership_required, login_required]
 @login_required # if request.user.is_authenticated:~~~ else:   return HttpResponseRedirect(reverse("accountapp:login")) 부분까지 장고에서 지원해줌 위에
 
 def hello_world(request):
-    # if request.user.is_authenticated:
+    if request.user.is_authenticated:
         if request.method == "POST":
 
             temp = request.POST.get('hello_world_input')
@@ -35,13 +35,13 @@ def hello_world(request):
         else:
             hello_world_list = HelloWorld.objects.all()
             return render(request, 'accountapp/hello_world.html', context={'hello_world_list' : hello_world_list})
-    # else:
-    #     return HttpResponseRedirect(reverse("accountapp:login"))
+    else:
+        return HttpResponseRedirect(reverse("accountapp:login"))
 
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('profileapp:create')
     # reverse_lazy는 클래스형 뷰에서 reverse 는 함수형 뷰에서
     template_name = 'accountapp/create.html'
 
@@ -81,6 +81,6 @@ class AccountUpdateView(UpdateView):
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
-    success_url = reverse_lazy('accountappl:login')
+    success_url = reverse_lazy('accountapp:login')
     template_name = 'accountapp/delete.html'
 
