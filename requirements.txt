@@ -1,8 +1,15 @@
-asgiref==3.3.4
-beautifulsoup4==4.9.3
-Django==3.2.3
-django-bootstrap4==3.0.1
-Pillow==8.2.0
-pytz==2021.1
-soupsieve==2.2.1
-sqlparse==0.4.1
+FROM python:3.8.8
+
+WORKDIR /home/
+
+RUN git clone https://github.com/lee-JunR/progmatic
+
+WORKDIR /home/progmatic/
+
+RUN pip install -r requirements.txt
+
+RUN python manage.py migrate
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver"]
